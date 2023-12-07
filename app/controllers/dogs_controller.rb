@@ -71,4 +71,9 @@ class DogsController < ApplicationController
 
     redirect_to("/dogs", { :notice => "Dog deleted successfully."} )
   end
+
+  def new_dog
+    render({ :template => "dogs/new_dog" })
+  end
+
 end

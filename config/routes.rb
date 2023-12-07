@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root "dogs#index"
   
+  #get("/", { :controller => "homepage", :action => "index" })
+
   # Routes For Dogs resource:
   get("/dogs", { :controller => "dogs", :action => "index" })
+  get("/dogs/new_dog", { :controller => "dogs", :action => "new_dog" })
   get("/dogs/:path_id", { :controller => "dogs", :action => "show" })  
   post("/insert_dog", { :controller => "dogs", :action => "create" })
   post("/modify_dog/:path_id", { :controller => "dogs", :action => "update" })
