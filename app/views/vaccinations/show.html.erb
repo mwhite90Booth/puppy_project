@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      Vaccination #<%= @the_vaccination.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/vaccinations">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_vaccination/<%= @the_vaccination.id %>">
+          Delete vaccination
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Dog
+      </dt>
+      <dd>
+        <%= @the_vaccination.dog_id %>
+      </dd>
+
+      <dt>
+        Vaccintation name
+      </dt>
+      <dd>
+        <%= @the_vaccination.vaccintation_name %>
+      </dd>
+
+      <dt>
+        Given date
+      </dt>
+      <dd>
+        <%= @the_vaccination.given_date %>
+      </dd>
+
+      <dt>
+        Expiration date
+      </dt>
+      <dd>
+        <%= @the_vaccination.expiration_date %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_vaccination.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_vaccination.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit vaccination
+    </h2>
+
+    <form action="/modify_vaccination/<%= @the_vaccination.id %>"  method="post" >
+      <div>
+        <label for="dog_id_box">
+          Dog
+        </label>
+
+        <input type="text" id="dog_id_box" name="query_dog_id" value="<%= @the_vaccination.dog_id %>">
+      </div>
+
+      <div>
+        <label for="vaccintation_name_box">
+          Vaccintation name
+        </label>
+
+        <input type="text" id="vaccintation_name_box" name="query_vaccintation_name" value="<%= @the_vaccination.vaccintation_name %>">
+      </div>
+
+      <div>
+        <label for="given_date_box">
+          Given date
+        </label>
+
+        <input type="datetime-local" id="given_date_box" name="query_given_date"
+         value="<%= @the_vaccination.given_date %>">
+      </div>
+
+      <div>
+        <label for="expiration_date_box">
+          Expiration date
+        </label>
+
+        <input type="datetime-local" id="expiration_date_box" name="query_expiration_date"
+         value="<%= @the_vaccination.expiration_date %>">
+      </div>
+
+      <button>
+        Update vaccination
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
