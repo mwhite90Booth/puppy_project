@@ -1,252 +1,98 @@
-<div>
-  <div>
-    <h1>
-      Dog #<%= @the_dog.id %> details
-    </h1>
-
-    <div>
-      <div>
-        <a href="/dogs">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_dog/<%= @the_dog.id %>">
-          Delete dog
-        </a>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <img src="<%= @the_dog.profile_picture %>" id="dog_show_image">
     </div>
-
-    <dl>
-      <dt>
-        First name
-      </dt>
-      <dd>
-        <%= @the_dog.first_name %>
-      </dd>
-
-      <dt>
-        Last name
-      </dt>
-      <dd>
-        <%= @the_dog.last_name %>
-      </dd>
-
-      <dt>
-        Profile picture
-      </dt>
-      <dd>
-        <%= @the_dog.profile_picture %>
-      </dd>
-
-      <dt>
-        Breed
-      </dt>
-      <dd>
-        <%= @the_dog.breed %>
-      </dd>
-
-      <dt>
-        Home address
-      </dt>
-      <dd>
-        <%= @the_dog.home_address %>
-      </dd>
-
-      <dt>
-        Date of birth
-      </dt>
-      <dd>
-        <%= @the_dog.date_of_birth %>
-      </dd>
-
-      <dt>
-        Vet name
-      </dt>
-      <dd>
-        <%= @the_dog.vet_name %>
-      </dd>
-
-      <dt>
-        Vet address
-      </dt>
-      <dd>
-        <%= @the_dog.vet_address %>
-      </dd>
-
-      <dt>
-        Vet phone
-      </dt>
-      <dd>
-        <%= @the_dog.vet_phone %>
-      </dd>
-
-      <dt>
-        Food brand
-      </dt>
-      <dd>
-        <%= @the_dog.food_brand %>
-      </dd>
-
-      <dt>
-        Food instructions
-      </dt>
-      <dd>
-        <%= @the_dog.food_instructions %>
-      </dd>
-
-      <dt>
-        Chip
-      </dt>
-      <dd>
-        <%= @the_dog.chip_id %>
-      </dd>
-
-      <dt>
-        Owner
-      </dt>
-      <dd>
-        <%= @the_dog.owner_id %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_dog.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_dog.updated_at) %> ago
-      </dd>
-    </dl>
+    <div class="col-5 dog_show_nav_buttons" id="dog_show_name_header">
+      <h1><%= @the_dog.first_name %> <%= @the_dog.last_name %></h1>
+    </div>
+    <div class="col-2 dog_show_nav_buttons">
+      <a href="/dogs">Back To Pups</a>
+    </div>
+    <div class="col dog_show_nav_buttons">
+      <a href="/dogs/<%= @the_dog.id %>">Edit Dog</a>
+    </div>
+    <div class="col dog_show_nav_buttons">
+      <a href="/delete_dog/<%= @the_dog.id %>">Delete Dog</a>
+    </div>
   </div>
-</div>
+
+  <hr>
+
+  <div class="row col dog_show_line_item">
+    <div class="">
+      <h3>Demographics:</h3>
+    </div>
+  </div>
+
+  <div class="row dog_show_line_item">
+    <div class="col">
+      Home Address: <%= @the_dog.home_address %>
+    </div>
+  </div>
+
+  <div class="row dog_show_line_item">
+    <div class="col-3">
+      Breed: <%= @the_dog.breed %>
+    </div>
+    <div class="col-3">
+      Chip ID: <%= @the_dog.chip_id %>
+    </div>
+    <div class="col-3">
+      Date Of Birth: <%= @the_dog.date_of_birth.strftime('%m/%d/%Y') %>
+    </div>
+  </div>
 
 <hr>
 
-
-<div>
-  <div>
-    <h2>
-      Edit dog
-    </h2>
-
-    <form action="/modify_dog/<%= @the_dog.id %>"  method="post" >
-      <div>
-        <label for="first_name_box">
-          First name
-        </label>
-
-        <input type="text" id="first_name_box" name="query_first_name" value="<%= @the_dog.first_name %>">
-      </div>
-
-      <div>
-        <label for="last_name_box">
-          Last name
-        </label>
-
-        <input type="text" id="last_name_box" name="query_last_name" value="<%= @the_dog.last_name %>">
-      </div>
-
-      <div>
-        <label for="profile_picture_box">
-          Profile picture
-        </label>
-
-        <input type="text" id="profile_picture_box" name="query_profile_picture" value="<%= @the_dog.profile_picture %>">
-      </div>
-
-      <div>
-        <label for="breed_box">
-          Breed
-        </label>
-
-        <input type="text" id="breed_box" name="query_breed" value="<%= @the_dog.breed %>">
-      </div>
-
-      <div>
-        <label for="home_address_box">
-          Home address
-        </label>
-
-        <textarea id="home_address_box" name="query_home_address"><%= @the_dog.home_address %></textarea>
-      </div>
-
-      <div>
-        <label for="date_of_birth_box">
-          Date of birth
-        </label>
-
-        <input type="datetime-local" id="date_of_birth_box" name="query_date_of_birth"
-         value="<%= @the_dog.date_of_birth %>">
-      </div>
-
-      <div>
-        <label for="vet_name_box">
-          Vet name
-        </label>
-
-        <input type="text" id="vet_name_box" name="query_vet_name" value="<%= @the_dog.vet_name %>">
-      </div>
-
-      <div>
-        <label for="vet_address_box">
-          Vet address
-        </label>
-
-        <textarea id="vet_address_box" name="query_vet_address"><%= @the_dog.vet_address %></textarea>
-      </div>
-
-      <div>
-        <label for="vet_phone_box">
-          Vet phone
-        </label>
-
-        <input type="text" id="vet_phone_box" name="query_vet_phone" value="<%= @the_dog.vet_phone %>">
-      </div>
-
-      <div>
-        <label for="food_brand_box">
-          Food brand
-        </label>
-
-        <textarea id="food_brand_box" name="query_food_brand"><%= @the_dog.food_brand %></textarea>
-      </div>
-
-      <div>
-        <label for="food_instructions_box">
-          Food instructions
-        </label>
-
-        <textarea id="food_instructions_box" name="query_food_instructions"><%= @the_dog.food_instructions %></textarea>
-      </div>
-
-      <div>
-        <label for="chip_id_box">
-          Chip
-        </label>
-
-        <input type="text" id="chip_id_box" name="query_chip_id" value="<%= @the_dog.chip_id %>">
-      </div>
-
-      <div>
-        <label for="owner_id_box">
-          Owner
-        </label>
-
-        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_dog.owner_id %>">
-      </div>
-
-      <button>
-        Update dog
-      </button>
-    </form>
+  <div class="row col dog_show_line_item">
+    <div class="">
+      <h3>Care Routine:</h3>
+    </div>
   </div>
-</div>
+
+  <div class="row dog_show_line_item">
+    <div class="col">
+      Food Brand: <%= @the_dog.food_brand %>
+    </div>
+  </div>
+
+  <div class="row dog_show_line_item">
+    <div class="col">
+      Instructions: <%= @the_dog.food_instructions %>
+    </div>
+  </div>
+
+  <div class="row dog_show_line_item">
+    <div class="col">
+      <%= @the_dog.food_instructions %>
+    </div>
+  </div>
 
 <hr>
+
+  <div class="row col dog_show_line_item">
+    <div class="">
+      <h3>Medical Record:</h3>
+    </div>
+  </div>
+
+  <div class="row dog_show_line_item">
+    <div class="col-3">
+      Vet: <%= @the_dog.vet_name %>
+    </div>
+    <div class="col-3">
+      Vet Phone Number: <%= @the_dog.vet_phone %>
+    </div>
+   <div class="col-3">
+      Vet Address: <%= @the_dog.vet_address %>
+    </div>
+  </div>
+
+  <div class="row col dog_show_line_item">
+    <div class="">
+      <h5>Vaccinations:</h5>
+    </div>
+  </div>
+
+</div>

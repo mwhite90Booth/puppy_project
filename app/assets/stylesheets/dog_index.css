@@ -1,0 +1,28 @@
+.dog-list{
+  width: 80%;
+  border-collapse: collapse;
+}
+
+.dog-list tr{
+  border: solid black 1px;
+}
+
+.dog-list td{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.dog-profile-pic{
+  width:100px;
+  height:100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.row{
+  border: 1px solid red;
+}
+
+.column{
+  border: 1px solid red;
+}

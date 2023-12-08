@@ -1,0 +1,21 @@
+.dog_show_nav_buttons{
+  display: flex;
+  border: solid red 1px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog_show_line_item{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#dog_show_name_header{
+  justify-content: left;
+}
+
+#dog_show_image{
+  overflow: hidden;
+  border: solid blue 1px;
+  max-width: 100%;
+}

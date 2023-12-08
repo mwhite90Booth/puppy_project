@@ -1,31 +1,26 @@
 <div>
   <h1>Your Pup Homepage</h1>
+
+  <form action="/dogs/new_dog" method="get">
+    <button>Add New Dog</button>
+  </form>
 </div>
 
 <hr>
 
 <div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>Profile picture</th>
-        <th>First name</th>
-        <th>Last name</th>
-      </tr>
-
-      <% @list_of_dogs.each do |a_dog| %>
-      <tr>
-        <td><%= a_dog.profile_picture %></td>
-        <td><%= a_dog.first_name %></td>
-        <td><%= a_dog.last_name %></td>
-      </tr>
-      <% end %>
-    </table>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-3">
+        <table class="dog-list">
+        <% @list_of_dogs.each do |a_dog| %>
+          <tr>
+            <td><a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog-profile-pic"></a></td>
+            <td><%= a_dog.first_name %> <%= a_dog.last_name %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
-
-<div>
-  <form action="/dogs/new_dog" method="get">
-    <button>Add New Dog</button>
-  </form>
 </div>
