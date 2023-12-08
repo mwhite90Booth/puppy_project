@@ -35,9 +35,10 @@ class VaccinationsController < ApplicationController
     the_vaccination.vaccintation_name = params.fetch("query_vaccintation_name")
     the_vaccination.given_date = params.fetch("query_given_date")
     the_vaccination.expiration_date = params.fetch("query_expiration_date")
+    dog_id = the_vaccination.dog_id
     if the_vaccination.valid?
       the_vaccination.save
-      redirect_to("/vaccinations/#{the_vaccination.id}", { :notice => "Vaccination updated successfully."} )
+      redirect_to("/dogs/#{dog_id}", { :notice => "Vaccination updated successfully."} )
     else
       redirect_to("/vaccinations/#{the_vaccination.id}", { :alert => the_vaccination.errors.full_messages.to_sentence })
     end
