@@ -9,18 +9,16 @@
 <hr>
 
 <div>
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-3">
-        <table class="dog-list">
-        <% @list_of_dogs.each do |a_dog| %>
-          <tr>
-            <td><a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog-profile-pic"></a></td>
-            <td><%= a_dog.first_name %> <%= a_dog.last_name %></td>
-          </tr>
-        <% end %>
-        </table>
-      </div>
-    </div>
+  <div class="container">
+    <% @list_of_dogs.each do |a_dog| %>
+      <div class="row dog_index_row">
+        <div class="col-2 dog_index_dog_container">
+          <div>
+            <a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog_index_profile_pic"></a>
+            <%= a_dog.first_name %> <%= a_dog.last_name %>
+          </div>
+        </div>
+      </div> 
+    <% end %>
   </div>
 </div>

@@ -1,6 +1,5 @@
 .dog_show_nav_buttons{
   display: flex;
-  border: solid red 1px;
   align-items: center;
   justify-content: center;
 }
@@ -16,6 +15,6 @@
 
 #dog_show_image{
   overflow: hidden;
-  border: solid blue 1px;
   max-width: 100%;
+  max-height: 200px;
 }

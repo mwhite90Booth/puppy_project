@@ -1,28 +1,17 @@
-.dog-list{
-  width: 80%;
-  border-collapse: collapse;
+
+.dog_index_row{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.dog-list tr{
-  border: solid black 1px;
+.dog_index_dog_container{
+  border: 1px solid darkgrey;
+  background-color: lightgrey;
 }
 
-.dog-list td{
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.dog-profile-pic{
+.dog_index_profile_pic{
   width:100px;
   height:100px;
   overflow: hidden;
   border-radius: 50%;
-}
-
-.row{
-  border: 1px solid red;
-}
-
-.column{
-  border: 1px solid red;
 }
