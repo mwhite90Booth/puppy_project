@@ -6,11 +6,11 @@
     <div class="col-5 dog_show_nav_buttons" id="dog_show_name_header">
       <h1><%= @the_dog.first_name %> <%= @the_dog.last_name %></h1>
     </div>
-    <div class="col-2 dog_show_nav_buttons">
+    <div class="col dog_show_nav_buttons">
       <a href="/dogs">Back To Pups</a>
     </div>
     <div class="col dog_show_nav_buttons">
-      <a href="/dogs/<%= @the_dog.id %>">Edit Dog</a>
+      <a href="/dogs/edit/<%= @the_dog.id %>">Edit Dog</a>
     </div>
     <div class="col dog_show_nav_buttons">
       <a href="/delete_dog/<%= @the_dog.id %>">Delete Dog</a>
@@ -59,13 +59,7 @@
 
   <div class="row dog_show_line_item">
     <div class="col">
-      Instructions: <%= @the_dog.food_instructions %>
-    </div>
-  </div>
-
-  <div class="row dog_show_line_item">
-    <div class="col">
-      <%= @the_dog.food_instructions %>
+      Meal Plan: <%= @the_dog.food_instructions %>
     </div>
   </div>
 
@@ -89,10 +83,24 @@
     </div>
   </div>
 
-  <div class="row col dog_show_line_item">
-    <div class="">
-      <h5>Vaccinations:</h5>
-    </div>
-  </div>
+  <div class="row dog_show_line_item">
+    <h4>Vaccinations:</h4>
 
+    <table id="dog_show_vaccination_table">
+      <tr>
+        <th>Vaccination Name</th>
+        <th>Given Date</th>
+        <th>Expiration Date</th>
+      </tr>
+
+      <% @the_vaccinations.each do |a_vaccination| %>
+      <tr>
+        <td><a href="/vaccinations/<%= a_vaccination.id %>"><%= a_vaccination.vaccintation_name %></a></td>
+        <td><%= a_vaccination.given_date.strftime('%m/%d/%Y') %></td>
+        <td><%= a_vaccination.expiration_date.strftime('%m/%d/%Y') %></td>
+      </tr>
+      <% end %>
+    </table>
+
+  </div>
 </div>

@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.dog_show_line_item{
+.vaccination_show_line_item{
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -21,8 +21,4 @@
   overflow: hidden;
   max-width: 100%;
   max-height: 200px;
-}
-
-#dog_show_vaccination_table{
-  margin-left: 20px
 }

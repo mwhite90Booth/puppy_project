@@ -1,66 +1,21 @@
-<div>
-  <div>
-    <h1>
-      Vaccination #<%= @the_vaccination.id %> details
-    </h1>
-
-    <div>
-      <div>
-        <a href="/vaccinations">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_vaccination/<%= @the_vaccination.id %>">
-          Delete vaccination
-        </a>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <img src="<%= @the_dog.profile_picture %>" id="dog_show_image">
     </div>
+    <div class="col-5 dog_show_nav_buttons" id="dog_show_name_header">
+      <h1><%= @the_dog.first_name %> <%= @the_dog.last_name %></h1>
+    </div>
+    <div class="col dog_show_nav_buttons">
+      <a href="/dogs/<%=@the_dog.id%>">Back To <%= @the_dog.first_name %> <%= @the_dog.last_name %></a>
+    </div>
+    <div class="col dog_show_nav_buttons">
+      <a href="/delete_vaccination/<%= @the_vaccination.id %>">Delete vaccination</a>
+    </div>
+  </div>
 
-    <dl>
-      <dt>
-        Dog
-      </dt>
-      <dd>
-        <%= @the_vaccination.dog_id %>
-      </dd>
-
-      <dt>
-        Vaccintation name
-      </dt>
-      <dd>
-        <%= @the_vaccination.vaccintation_name %>
-      </dd>
-
-      <dt>
-        Given date
-      </dt>
-      <dd>
-        <%= @the_vaccination.given_date %>
-      </dd>
-
-      <dt>
-        Expiration date
-      </dt>
-      <dd>
-        <%= @the_vaccination.expiration_date %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_vaccination.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_vaccination.updated_at) %> ago
-      </dd>
-    </dl>
+  <div class="row vaccination_show_line_item">
+    <h3>Edit <%= @the_vaccination.vaccintation_name %> Vaccination Details</h2>
   </div>
 </div>
 

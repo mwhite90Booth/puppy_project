@@ -6,11 +6,8 @@ class DogsController < ApplicationController
     render({ :template => "dogs/index" })
   end
 
-  def show
-    the_id = params.fetch("path_id")
-    matching_dogs = Dog.where({ :id => the_id })
-    @the_dog = matching_dogs.at(0)
-    render({ :template => "dogs/show" })
+  def new_dog
+    render({ :template => "dogs/insert" })
   end
 
   def create
@@ -28,7 +25,6 @@ class DogsController < ApplicationController
     the_dog.food_instructions = params.fetch("query_food_instructions")
     the_dog.chip_id = params.fetch("query_chip_id")
     the_dog.owner_id = params.fetch("query_owner_id")
-
     if the_dog.valid?
       the_dog.save
       redirect_to("/dogs", { :notice => "Dog created successfully." })
@@ -37,10 +33,24 @@ class DogsController < ApplicationController
     end
   end
 
+  def show
+    the_id = params.fetch("path_id")
+    matching_dogs = Dog.where({ :id => the_id })
+    @the_dog = matching_dogs.at(0)
+    @the_vaccinations = Vaccination.where({ :dog_id => the_id})
+    render({ :template => "dogs/show" })
+  end
+
+  def edit
+    the_id = params.fetch("path_id")
+    matching_dogs = Dog.where({ :id => the_id })
+    @the_dog = matching_dogs.at(0)
+    render({ :template => "dogs/edit" })
+  end
+
   def update
     the_id = params.fetch("path_id")
     the_dog = Dog.where({ :id => the_id }).at(0)
-
     the_dog.first_name = params.fetch("query_first_name")
     the_dog.last_name = params.fetch("query_last_name")
     the_dog.profile_picture = params.fetch("query_profile_picture")
@@ -54,7 +64,6 @@ class DogsController < ApplicationController
     the_dog.food_instructions = params.fetch("query_food_instructions")
     the_dog.chip_id = params.fetch("query_chip_id")
     the_dog.owner_id = params.fetch("query_owner_id")
-
     if the_dog.valid?
       the_dog.save
       redirect_to("/dogs/#{the_dog.id}", { :notice => "Dog updated successfully."} )
@@ -66,14 +75,8 @@ class DogsController < ApplicationController
   def destroy
     the_id = params.fetch("path_id")
     the_dog = Dog.where({ :id => the_id }).at(0)
-
     the_dog.destroy
-
     redirect_to("/dogs", { :notice => "Dog deleted successfully."} )
-  end
-
-  def new_dog
-    render({ :template => "dogs/new_dog" })
   end
 
 end
