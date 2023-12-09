@@ -1,11 +1,27 @@
 .dog_index_row{
   margin-top: 10px;
   margin-bottom: 10px;
+  align-items: center;
 }
 
 .dog_index_profile_pic{
-  width:100px;
-  max-height:100px;
+  max-width:150px;
   overflow: hidden;
-  border-radius: 50%;
+}
+
+.dog_index_nav_buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog_index_table td {
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.dog_index_table_hover:hover {
+  background-color: rgb(242, 236, 236);
 }

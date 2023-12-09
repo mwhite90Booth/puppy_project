@@ -1,38 +1,56 @@
 <div class="container">
-  <div class="row">
-    <div class="col-8">
-      <h1>Your Pup Homepage</h1>
+  <div class="row dog_index_nav_buttons">
+    <div class="col-6">
+      <h1>Your Pup Dashboard</h1>
     </div> 
-    <div class="col-4">
-      <%if current_user != nil%>
+    <%if current_user != nil%>
+      <div class = "col-2">
+        <a href="/dogs/new_dog">Add New Dog</a>
+      </div> 
+      <div class = "col-2">
         <a href="/users/sign_out">Sign out</a>
+      </div> 
+      <div class = "col-2">
         <a href="/users/edit">Edit profile</a>
-      <%else%>
+      </div> 
+    <%else%>
+      <div class = "col-2">
         <a href="/users/sign_up">Sign up</a>
+      </div>
+      <div class = "col-2">
         <a href="/users/sign_in">Sign in</a>
-      <%end%>
-    </div>
+      </div>
+    <%end%>
   </div>    
 
   <hr>
 
-
   <%if current_user != nil%>
     <%if @list_of_dogs != nil%>
-      <% @list_of_dogs.each do |a_dog| %>
-        <div class="row dog_index_row">
-          <div class="col-3">
-            <div>
-              <a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog_index_profile_pic"></a>
-              <%= a_dog.first_name %> <%= a_dog.last_name %>
-            </div>
-          </div>
-        </div> 
-      <%end%>
+      <div class="row">
+        <table class="dog_index_table">
+          <tr>
+            <th>Picture</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Details</th>
+            <th>Delete</th>
+          </tr>
+
+          <% @list_of_dogs.each do |a_dog| %>
+          <tr class="dog_index_table_hover">
+            <td><img src="<%= a_dog.profile_picture %>" class="dog_index_profile_pic"></td>
+            <td><%= a_dog.first_name %></td>
+            <td><%= a_dog.last_name %></td>
+            <td><a href="/dogs/<%= a_dog.id%>">...</a></td>
+            <td><a href="/delete_dog/<%= a_dog.id %>">Delete Dog</a></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
     <%else%>
       <div></div>
     <%end%>
-  <a href="/dogs/new_dog">Add New Dog</a>
   <%else%>
+    <div></div>
   <%end%>
-</div>
