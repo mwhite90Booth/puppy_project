@@ -16,15 +16,23 @@
 
   <hr>
 
-  <% @list_of_dogs.each do |a_dog| %>
-  <div class="row dog_index_row">
-    <div class="col-3">
-      <div>
-        <a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog_index_profile_pic"></a>
-        <%= a_dog.first_name %> <%= a_dog.last_name %>
-      </div>
-    </div>
-  </div> 
-  <% end %>
+
+  <%if current_user != nil%>
+    <%if @list_of_dogs != nil%>
+      <% @list_of_dogs.each do |a_dog| %>
+        <div class="row dog_index_row">
+          <div class="col-3">
+            <div>
+              <a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog_index_profile_pic"></a>
+              <%= a_dog.first_name %> <%= a_dog.last_name %>
+            </div>
+          </div>
+        </div> 
+      <%end%>
+    <%else%>
+      <div></div>
+    <%end%>
   <a href="/dogs/new_dog">Add New Dog</a>
+  <%else%>
+  <%end%>
 </div>

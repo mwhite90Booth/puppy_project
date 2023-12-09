@@ -1,8 +1,9 @@
 class DogsController < ApplicationController
   
   def index
-    matching_dogs = Dog.all
-    @list_of_dogs = matching_dogs.order({ :created_at => :desc })
+    if current_user != nil
+      @list_of_dogs = Dog.where({ :owner_id => current_user.id})
+    end
     render({ :template => "dogs/index" })
   end
 
