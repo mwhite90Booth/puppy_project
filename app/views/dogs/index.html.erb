@@ -1,24 +1,30 @@
-<div>
-  <h1>Your Pup Homepage</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h1>Your Pup Homepage</h1>
+    </div> 
+    <div class="col-4">
+      <%if current_user != nil%>
+        <a href="/users/sign_out">Sign out</a>
+        <a href="/users/edit">Edit profile</a>
+      <%else%>
+        <a href="/users/sign_up">Sign up</a>
+        <a href="/users/sign_in">Sign in</a>
+      <%end%>
+    </div>
+  </div>    
 
-  <form action="/dogs/new_dog" method="get">
-    <button>Add New Dog</button>
-  </form>
-</div>
+  <hr>
 
-<hr>
-
-<div>
-  <div class="container">
-    <% @list_of_dogs.each do |a_dog| %>
-      <div class="row dog_index_row">
-        <div class="col-2 dog_index_dog_container">
-          <div>
-            <a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog_index_profile_pic"></a>
-            <%= a_dog.first_name %> <%= a_dog.last_name %>
-          </div>
-        </div>
-      </div> 
-    <% end %>
-  </div>
+  <% @list_of_dogs.each do |a_dog| %>
+  <div class="row dog_index_row">
+    <div class="col-3">
+      <div>
+        <a href="/dogs/<%= a_dog.id%>"><img src="<%= a_dog.profile_picture %>" class="dog_index_profile_pic"></a>
+        <%= a_dog.first_name %> <%= a_dog.last_name %>
+      </div>
+    </div>
+  </div> 
+  <% end %>
+  <a href="/dogs/new_dog">Add New Dog</a>
 </div>

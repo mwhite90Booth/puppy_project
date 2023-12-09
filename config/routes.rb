@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   post("/modify_vaccination/:path_id", { :controller => "vaccinations", :action => "update" })
   get("/delete_vaccination/:path_id", { :controller => "vaccinations", :action => "destroy" })
   post("/insert_vaccination", { :controller => "vaccinations", :action => "create" })
+
 end
