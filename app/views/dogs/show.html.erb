@@ -65,8 +65,8 @@
 
 <hr>
 
-  <div class="row col dog_show_line_item">
-    <div class="">
+  <div class="row dog_show_line_item">
+    <div class="col">
       <h3>Medical Record:</h3>
     </div>
   </div>
@@ -83,23 +83,38 @@
     </div>
   </div>
 
-  <div class="row dog_show_line_item">
-    <h5>Vaccinations:</h5>
-    <table id="dog_show_vaccination_table">
-      <tr>
-        <th>Name</th>
-        <th>Given Date</th>
-        <th>Expiration Date</th>
-      </tr>
 
-      <% @the_vaccinations.each do |a_vaccination| %>
-      <tr>
-        <td><a href="/vaccinations/<%= a_vaccination.id %>"><%= a_vaccination.vaccintation_name %></a></td>
-        <td><%= a_vaccination.given_date.strftime('%m/%d/%Y') %></td>
-        <td><%= a_vaccination.expiration_date.strftime('%m/%d/%Y') %></td>
-      </tr>
-      <% end %>
-    </table>
+  <div class="row" id="dog_show_vaccination_header">
+    <div class="col-1"></div>
+    <div class="col-2">
+      <h5>Vaccinations:</h5>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-2">
+      <a href="/vaccinations/new/<%= @the_dog.id %>">Add Vaccination</a>
+    </div>
+    <div class="col-4"></div>
+  </div>
 
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-9">
+      <table id="dog_show_vaccination_table">
+        <tr>
+          <th>Name</th>
+          <th>Given Date</th>
+          <th>Expiration Date</th>
+        </tr>
+
+        <% @the_vaccinations.each do |a_vaccination| %>
+        <tr>
+          <td><a href="/vaccinations/<%= a_vaccination.id %>"><%= a_vaccination.vaccintation_name %></a></td>
+          <td><%= a_vaccination.given_date.strftime('%m/%d/%Y') %></td>
+          <td><%= a_vaccination.expiration_date.strftime('%m/%d/%Y') %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-2"></div>
   </div>
 </div>

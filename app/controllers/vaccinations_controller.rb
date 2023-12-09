@@ -14,6 +14,20 @@ class VaccinationsController < ApplicationController
     render({ :template => "vaccinations/show" })
   end
 
+  def new_vaccination
+    the_id = params.fetch("path_id")
+    @the_dog = Dog.where({ :id => the_id}).at(0)
+    
+    @the_vaccination = Vaccination.new
+    @the_vaccination.dog_id = @the_dog.id
+    @the_vaccination.vaccintation_name = "Name"
+    @the_vaccination.given_date = Time.new().strftime('%Y-%m-%dT%H:%M:%S')
+    @the_vaccination.expiration_date = Time.new().strftime('%Y-%m-%dT%H:%M:%S')
+    @the_vaccination.save
+
+    render({ :template => "vaccinations/show" })
+  end
+
   def create
     the_vaccination = Vaccination.new
     the_vaccination.dog_id = params.fetch("query_dog_id")
@@ -48,6 +62,6 @@ class VaccinationsController < ApplicationController
     the_id = params.fetch("path_id")
     the_vaccination = Vaccination.where({ :id => the_id }).at(0)
     the_vaccination.destroy
-    redirect_to("/vaccinations", { :notice => "Vaccination deleted successfully."} )
+    redirect_to("/dogs/#{the_vaccination.dog_id}", { :notice => "Vaccination deleted successfully."} )
   end
 end

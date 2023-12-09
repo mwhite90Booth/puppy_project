@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <img src="<%= @the_dog.profile_picture %>" id="dog_show_image">
+      <img src="<%= @the_dog.profile_picture %>" id="vaccination_show_image">
     </div>
-    <div class="col-5 dog_show_nav_buttons" id="dog_show_name_header">
+    <div class="col-5 vaccination_show_nav_buttons" id="vaccination_show_name_header">
       <h1><%= @the_dog.first_name %> <%= @the_dog.last_name %></h1>
     </div>
-    <div class="col dog_show_nav_buttons">
+    <div class="col vaccination_show_nav_buttons">
       <a href="/dogs/<%=@the_dog.id%>">Back To <%= @the_dog.first_name %> <%= @the_dog.last_name %></a>
     </div>
-    <div class="col dog_show_nav_buttons">
+    <div class="col vaccination_show_nav_buttons">
       <a href="/delete_vaccination/<%= @the_vaccination.id %>">Delete vaccination</a>
     </div>
   </div>
@@ -38,7 +38,7 @@
         <label for="dog_id_box"></label>
         <input type="hidden" id="dog_id_box" name="query_dog_id" value="<%= @the_vaccination.dog_id %>">
       </div>
-      <button class="vaccination_show_field">Update vaccination</button>
+      <button class="vaccination_show_field">Save vaccination</button>
     </form>
   </div>
 
